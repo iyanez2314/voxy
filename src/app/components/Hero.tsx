@@ -33,11 +33,11 @@ export function Hero() {
       <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
         <Link
           href="/login"
-          className="w-40 flex items-center justify-center h-10 rounded-xl bg-black border border-[#DB4A2B] dark:border-white border-transparent text-white text-sm"
+          className="w-40 flex items-center justify-center h-10 rounded-xl  border hover:border-[#DB4A2B] dark:border-white border-transparent text-white text-sm"
         >
           Login
         </Link>
-        <button className="w-40 h-10 rounded-xl bg-[#DB4A2B] text-[#E4E2DD] border border-[#DB4A2B]  text-sm">
+        <button className="w-40 h-10 hover:bg-transparent transition-all ease-in-out rounded-xl bg-[#DB4A2B] text-[#E4E2DD] border border-[#DB4A2B]  text-sm">
           Signup
         </button>
       </div>

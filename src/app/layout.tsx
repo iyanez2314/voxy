@@ -30,7 +30,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body>{children}</body>
+      <body className="bg-[#151718]">{children}</body>
     </html>
   );
 }

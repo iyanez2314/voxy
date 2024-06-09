@@ -8,6 +8,7 @@ import Image from "next/image";
 import MyTextField from "./MyTextField";
 import { OAuthSocialButton } from "@/subframe/components/OAuthSocialButton";
 import { Avatar } from "@/subframe/components/Avatar";
+import Link from "next/link";
 
 export default function Login() {
   return (
@@ -64,17 +65,12 @@ export default function Login() {
             </div>
             <div className="flex w-full flex-col items-start justify-center gap-6">
               <MyTextField field="Email" />
-              <Button
-                className="h-10 w-full flex-none bg-[#DB4A2B]"
-                disabled={false}
-                variant="brand-primary"
-                size="large"
-                icon={null}
-                iconRight={null}
-                loading={false}
+              <Link
+                className="h-10 items-center flex justify-center rounded-xl w-full flex-none bg-[#DB4A2B] hover:bg-black hover:border-[#DB4A2B] border-[#DB4A2B] active:bg-black "
+                href="/dashboard"
               >
                 Continue
-              </Button>
+              </Link>
             </div>
             <div className="flex flex-wrap items-start gap-2">
               <span className="text-body font-body text-subtext-color">
