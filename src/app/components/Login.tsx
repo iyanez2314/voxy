@@ -82,7 +82,7 @@ export default function Login() {
             </div>
           </div>
         </div>
-        <div className="flex h-full w-full grow shrink-0 basis-0 flex-col items-center gap-12 bg-black pt-12 pr-12 pb-12 pl-12">
+        <div className="flex h-full w-full grow shrink-0 basis-0 flex-col items-center gap-12 bg-[#151718] pt-12 pr-12 pb-12 pl-12">
           <div className="flex h-full w-full max-w-[448px] grow shrink-0 basis-0 flex-col items-center justify-center gap-8">
             <Avatar
               size="x-large"
