@@ -26,20 +26,66 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useState } from "react";
-import ChatComponent from "./ChatComponent";
-import Dashboard from "./Dashboard/Dashboard";
+import { useEffect, useState } from "react";
 import VoxyLogo from "../../../public/V-removebg-preview.png";
 import Image from "next/image";
+import ChatComponent from "./ChatComponent";
+import Dashboard from "./Dashboard/Dashboard";
+import SessionComponent from "./Session/SessionComponent";
+import { SessionType } from "../../types/index";
+
+let mockData: SessionType[] = [
+  {
+    id: "1",
+    grade: "90",
+    description: "Session 1",
+    createdAt: "2021-09-10T10:00:00.000Z",
+    updatedAt: "2021-09-10T10:00:00.000Z",
+  },
+  {
+    id: "2",
+    grade: "80",
+    description: "Session 2",
+    createdAt: "2021-09-10T10:00:00.000Z",
+    updatedAt: "2021-09-10T10:00:00.000Z",
+  },
+  {
+    id: "3",
+    grade: "70",
+    description: "Session 3",
+    createdAt: "2021-09-10T10:00:00.000Z",
+    updatedAt: "2021-09-10T10:00:00.000Z",
+  },
+];
 
 export function MyDashboard() {
   const [activeComponent, setActiveComponent] = useState("dashboard");
+  const [activeSession, setActiveSession] = useState<SessionType[] | undefined>(
+    []
+  );
+  const [activeSessionId, setActiveSessionId] = useState<string>("");
+
+  const handleSetActiveSession = (id: string) => {
+    const session = mockData.find(
+      (session) => session.id === id
+    ) as SessionType;
+    setActiveSession([session]);
+    setActiveSessionId(id);
+    setActiveComponent("session");
+  };
 
   const renderActiveComponent = () => {
     if (activeComponent === "dashboard") {
-      return <Dashboard />;
+      return (
+        <Dashboard
+          handleActiveSession={handleSetActiveSession}
+          data={mockData}
+        />
+      );
     } else if (activeComponent === "chat") {
       return <ChatComponent />;
+    } else if (activeComponent === "session") {
+      return <SessionComponent />;
     }
   };
 
