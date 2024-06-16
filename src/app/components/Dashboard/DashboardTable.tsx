@@ -107,17 +107,17 @@ export default function DashboardTable({
                           className={`text-xs ${
                             parseInt(session.grade) >= 80
                               ? "text-[#51ba69]"
-                              : "bg-red-500}`} "
+                              : "text-red-500`} "
                           }`}
                           variant="outline"
                         >
-                          {session.grade}
+                          {session.grade}%
                         </Badge>
                       </TableCell>
                       <TableCell className=" sm:table-cell">
                         <Link
                           href={`/dashboard/session/${session.id}`}
-                          className="text-md hover:cursor-pointer gap-2"
+                          className="text-md hover:cursor-pointer gap-2 flex items-center"
                         >
                           View
                           <span>

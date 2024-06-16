@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import HomeIcon from "./HomeIcon";
 import ChatSessionIcon from "./ChatSessionIcon";
@@ -9,6 +10,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 const links = [
   { name: "Dashboard", href: "/dashboard", icon: HomeIcon },
@@ -20,6 +23,7 @@ const links = [
 ];
 
 export default function NavLinks() {
+  const pathname = usePathname();
   return (
     <>
       {links.map((link) => {
@@ -29,7 +33,12 @@ export default function NavLinks() {
             <TooltipTrigger className="text-white" asChild>
               <Link
                 href={link.href}
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground bg-[#2f4435] md:h-8 md:w-8"
+                className={clsx(
+                  "flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8",
+                  {
+                    "bg-[#242627]": pathname === link.href,
+                  }
+                )}
               >
                 <LinkIcon />
                 <span className="sr-only">{link.name}</span>
