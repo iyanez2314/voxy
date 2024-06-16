@@ -26,8 +26,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { SessionType } from "@/src/types";
+import Link from "next/link";
 
-export default function DashboardTable() {
+interface DashboardTableProps {
+  data: SessionType[];
+  handleActiveSession: (id: string) => void;
+}
+
+export default function DashboardTable({
+  data,
+  handleActiveSession,
+}: DashboardTableProps) {
   return (
     <>
       <Tabs defaultValue="week">
@@ -78,114 +88,55 @@ export default function DashboardTable() {
                   </TableRow>
                 </TableHeader>
                 <TableBody className="p-3">
-                  <TableRow className="bg-accent">
-                    <TableCell className="p-2">
-                      <div className="font-medium">May 06 2024</div>
-                      <div className="hidden text-sm text-muted-foreground md:inline">
-                        12:30 PM
-                      </div>
-                    </TableCell>
-                    <TableCell className="hidden sm:table-cell">
-                      <Badge className="text-xs text-red-500" variant="outline">
-                        60%
-                      </Badge>
-                    </TableCell>
-                    <TableCell className=" sm:table-cell">
-                      <Badge
-                        className="text-md hover:cursor-pointer gap-2"
-                        variant="secondary"
-                      >
-                        View
-                        <span>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              fill="currentColor"
-                              d="M16.15 13H5q-.425 0-.712-.288T4 12t.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z"
-                            />
-                          </svg>
-                        </span>
-                      </Badge>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow className="bg-accent">
-                    <TableCell className="p-2">
-                      <div className="font-medium">May 06 2024</div>
-                      <div className="hidden text-sm text-muted-foreground md:inline">
-                        10:30 PM
-                      </div>
-                    </TableCell>
-                    <TableCell className="hidden sm:table-cell">
-                      <Badge
-                        className="text-xs text-[#12b981]"
-                        variant="outline"
-                      >
-                        80%
-                      </Badge>
-                    </TableCell>
-                    <TableCell className=" sm:table-cell">
-                      <Badge
-                        className="text-md hover:cursor-pointer gap-2"
-                        variant="secondary"
-                      >
-                        View
-                        <span>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              fill="currentColor"
-                              d="M16.15 13H5q-.425 0-.712-.288T4 12t.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z"
-                            />
-                          </svg>
-                        </span>
-                      </Badge>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow className="bg-accent">
-                    <TableCell className="p-2">
-                      <div className="font-medium">May 06 2024</div>
-                      <div className="hidden text-sm text-muted-foreground md:inline">
-                        9:30 PM
-                      </div>
-                    </TableCell>
-                    <TableCell className="hidden sm:table-cell">
-                      <Badge
-                        className="text-xs text-[#12b981]"
-                        variant="outline"
-                      >
-                        90%
-                      </Badge>
-                    </TableCell>
-                    <TableCell className=" sm:table-cell">
-                      <Badge
-                        className="text-md hover:cursor-pointer gap-2"
-                        variant="secondary"
-                      >
-                        View
-                        <span>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              fill="currentColor"
-                              d="M16.15 13H5q-.425 0-.712-.288T4 12t.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z"
-                            />
-                          </svg>
-                        </span>
-                      </Badge>
-                    </TableCell>
-                  </TableRow>
+                  {data.map((session) => (
+                    <TableRow
+                      key={session.id}
+                      onClick={() => handleActiveSession(session.id)}
+                      className="bg-accent hover:bg-accent-hover cursor-pointer"
+                    >
+                      <TableCell className="p-2">
+                        <div className="font-medium">
+                          {new Date(session.createdAt).toLocaleDateString()}
+                        </div>
+                        <div className="hidden text-sm text-muted-foreground md:inline">
+                          {new Date(session.createdAt).toLocaleTimeString()}
+                        </div>
+                      </TableCell>
+                      <TableCell className="hidden sm:table-cell">
+                        <Badge
+                          className={`text-xs ${
+                            parseInt(session.grade) >= 80
+                              ? "text-[#51ba69]"
+                              : "text-red-500`} "
+                          }`}
+                          variant="outline"
+                        >
+                          {session.grade}%
+                        </Badge>
+                      </TableCell>
+                      <TableCell className=" sm:table-cell">
+                        <Link
+                          href={`/dashboard/session/${session.id}`}
+                          className="text-md hover:cursor-pointer gap-2 flex items-center"
+                        >
+                          View
+                          <span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="1em"
+                              height="1em"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M16.15 13H5q-.425 0-.712-.288T4 12t.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z"
+                              />
+                            </svg>
+                          </span>
+                        </Link>
+                      </TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </CardContent>

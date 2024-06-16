@@ -1,12 +1,21 @@
 import React from "react";
 import DashboardAnalytics from "./DashboardAnalytics";
 import DashboardTable from "./DashboardTable";
+import { SessionType } from "@/src/types";
 
-export default function Dashboard() {
+interface DashboardProps {
+  handleActiveSession: (id: string) => void;
+  data: SessionType[];
+}
+
+export default function Dashboard({
+  handleActiveSession,
+  data,
+}: DashboardProps) {
   return (
     <>
       <DashboardAnalytics />
-      <DashboardTable />
+      <DashboardTable data={data} handleActiveSession={handleActiveSession} />
     </>
   );
 }

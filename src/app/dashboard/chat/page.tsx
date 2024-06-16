@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 
 export default function page() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[100dvh] bg-gray-100 dark:bg-gray-900 p-4 md:p-8">
+    <div className="flex flex-col items-center justify-center min-h-[68dvh] dark:bg-gray-900 p-4 md:p-8">
       <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 md:p-8">
         <div className="text-center space-y-4">
           <MicIcon className="mx-auto h-12 w-12 text-gray-500 dark:text-gray-400" />
