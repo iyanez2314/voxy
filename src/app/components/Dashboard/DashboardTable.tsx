@@ -27,6 +27,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { SessionType } from "@/src/types";
+import Link from "next/link";
 
 interface DashboardTableProps {
   data: SessionType[];
@@ -114,10 +115,9 @@ export default function DashboardTable({
                         </Badge>
                       </TableCell>
                       <TableCell className=" sm:table-cell">
-                        <Badge
-                          onClick={() => handleActiveSession(session.id)}
+                        <Link
+                          href={`/dashboard/session/${session.id}`}
                           className="text-md hover:cursor-pointer gap-2"
-                          variant="secondary"
                         >
                           View
                           <span>
@@ -133,7 +133,7 @@ export default function DashboardTable({
                               />
                             </svg>
                           </span>
-                        </Badge>
+                        </Link>
                       </TableCell>
                     </TableRow>
                   ))}
