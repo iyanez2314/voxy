@@ -159,51 +159,33 @@ const SkeletonFour = () => {
         variants={first}
         className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
       >
-        <Image
-          src=""
-          alt="avatar"
-          height="100"
-          width="100"
-          className="rounded-full h-10 w-10"
-        />
+        <h1 className="text-3xl">79%</h1>
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-          Just code in Vanilla Javascript
+          The tone of voice in the session
         </p>
         <p className="border border-red-500 bg-red-100 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Delusional
+          Tone of voice
         </p>
       </motion.div>
       <motion.div className="h-full relative z-20 w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center">
-        <Image
-          src=""
-          alt="avatar"
-          height="100"
-          width="100"
-          className="rounded-full h-10 w-10"
-        />
+        <h1 className="text-3xl">90%</h1>
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-          Tailwind CSS is cool, you know
+          The overall score of the session
         </p>
         <p className="border border-green-500 bg-green-100 dark:bg-green-900/20 text-green-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Sensible
+          Overall
         </p>
       </motion.div>
       <motion.div
         variants={second}
         className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
       >
-        <Image
-          src=""
-          alt="avatar"
-          height="100"
-          width="100"
-          className="rounded-full h-10 w-10"
-        />
+        <h1 className="text-3xl">80%</h1>
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-          I love angular, RSC, and Redux.
+          The knowledge of the product
         </p>
         <p className="border border-orange-500 bg-orange-100 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Helpless
+          Knowledge of the product
         </p>
       </motion.div>
     </motion.div>
@@ -212,22 +194,16 @@ const SkeletonFour = () => {
 
 const items = [
   {
-    title: "AI Content Generation",
-    description: (
-      <span className="text-sm">
-        Experience the power of AI in generating unique content.
-      </span>
-    ),
+    title: "Session Transcription",
+    description: <span className="text-sm">View session transcription.</span>,
     header: <SkeletonOne />,
     className: "md:col-span-1",
     icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
   },
   {
-    title: "Automated Proofreading",
+    title: "Listen to Session",
     description: (
-      <span className="text-sm">
-        Let AI handle the proofreading of your documents.
-      </span>
+      <span className="text-sm">Listen to the session audio recording.</span>
     ),
     header: <SkeletonTwo />,
     className: "md:col-span-1",
