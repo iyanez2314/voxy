@@ -1,9 +1,9 @@
 "use client";
-import { cn } from "../util/cn";
+import { cn } from "../../util/cn";
 import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
 import React from "react";
 
-export const HeroHighlight = ({
+export const SignupHero = ({
   children,
   className,
   containerClassName,
@@ -29,7 +29,7 @@ export const HeroHighlight = ({
   return (
     <div
       className={cn(
-        "relative h-[40rem] flex items-center  justify-center w-full group",
+        "relative h-[40rem] flex items-center bg-white dark:bg-black justify-center w-full group",
         containerClassName
       )}
       onMouseMove={handleMouseMove}
