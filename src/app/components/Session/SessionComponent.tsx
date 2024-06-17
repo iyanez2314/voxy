@@ -167,7 +167,7 @@ const SkeletonFour = () => {
           The tone of voice in the session
         </p>
         <p className="border border-red-500 bg-red-100 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Tone of voice
+          Tone
         </p>
       </motion.div>
       <motion.div className="h-full relative z-20 w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center">
@@ -188,7 +188,7 @@ const SkeletonFour = () => {
           The knowledge of the product
         </p>
         <p className="border border-orange-500 bg-orange-100 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          Knowledge of the product
+          Knowledge
         </p>
       </motion.div>
     </motion.div>
@@ -213,10 +213,10 @@ const items = [
     icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
   },
   {
-    title: "Sentiment Analysis",
+    title: "Overall Session Score",
     description: (
       <span className="text-sm">
-        Understand the sentiment of your text with AI analysis.
+        View the overall session score and the tone of voice.
       </span>
     ),
     header: <SkeletonFour />,
