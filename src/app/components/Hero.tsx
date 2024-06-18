@@ -37,9 +37,12 @@ export function Hero() {
         >
           Login
         </Link>
-        <button className="w-40 h-10 hover:bg-transparent transition-all ease-in-out rounded-xl bg-[#DB4A2B] text-[#E4E2DD] border border-[#DB4A2B]  text-sm">
+        <Link
+          href="/signup"
+          className="w-40 h-10 hover:bg-transparent transition-all ease-in-out rounded-xl bg-[#DB4A2B] text-[#E4E2DD] border border-[#DB4A2B]  text-sm"
+        >
           Signup
-        </button>
+        </Link>
       </div>
     </div>
   );
