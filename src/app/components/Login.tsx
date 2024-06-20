@@ -72,13 +72,11 @@ export default function Login() {
                 Continue
               </Link>
             </div>
-            <div className="flex flex-wrap items-start gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <span className="text-body font-body text-subtext-color">
                 Already have an account?
               </span>
-              <LinkButton variant="brand" icon={null}>
-                Sign In
-              </LinkButton>
+              <Link href="/signup">Sign In</Link>
             </div>
           </div>
         </div>
