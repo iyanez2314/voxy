@@ -39,7 +39,7 @@ export function Hero() {
         </Link>
         <Link
           href="/signup"
-          className="w-40 h-10 hover:bg-transparent transition-all ease-in-out rounded-xl bg-[#DB4A2B] text-[#E4E2DD] border border-[#DB4A2B]  text-sm"
+          className="w-40 h-10 hover:bg-transparent flex justify-center items-center transition-all ease-in-out rounded-xl bg-[#DB4A2B] text-[#E4E2DD] border border-[#DB4A2B]  text-sm"
         >
           Signup
         </Link>
