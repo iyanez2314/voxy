@@ -23,12 +23,12 @@ export default function Page() {
                 >
                   Login
                 </Link>
-                <a
+                <Link
                   className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-[#DB4A2B] transition hover:opacity sm:block"
-                  href="#"
+                  href="/signup/form"
                 >
                   Register
-                </a>
+                </Link>
               </div>
             </div>
           </div>
