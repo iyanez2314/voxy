@@ -258,12 +258,12 @@ export default function Page() {
                 </li> */}
               </ul>
 
-              <a
-                href="#"
+              <Link
+                href="/signup/form"
                 className="mt-8 block rounded-full border border-indigo-600 bg-indigo-600 px-12 py-3 text-center text-sm font-medium text-white hover:bg-indigo-700 hover:ring-1 hover:ring-indigo-700 focus:outline-none focus:ring active:text-indigo-500"
               >
                 Get Started
-              </a>
+              </Link>
             </div>
 
             <div className="rounded-2xl border border-gray-200 p-6 shadow-sm sm:px-8 lg:p-12">
@@ -359,12 +359,12 @@ export default function Page() {
                 </li> */}
               </ul>
 
-              <a
-                href="#"
+              <Link
+                href="/signup/form"
                 className="mt-8 block rounded-full border border-indigo-600 bg-white px-12 py-3 text-center text-sm font-medium text-indigo-600 hover:ring-1 hover:ring-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
               >
                 Get Started
-              </a>
+              </Link>
             </div>
           </div>
         </div>
