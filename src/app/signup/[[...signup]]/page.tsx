@@ -1,24 +1,22 @@
-import React from "react";
-import { LinkButton } from "@/subframe/components/LinkButton";
-import { TextField } from "@/subframe/components/TextField";
-import * as SubframeCore from "@subframe/core";
-import { Button } from "@/subframe/components/Button";
-import VoxyLogo from "../../../public/V-removebg-preview.png";
-import Image from "next/image";
-import MyTextField from "./MyTextField";
-import { OAuthSocialButton } from "@/subframe/components/OAuthSocialButton";
-import { Avatar } from "@/subframe/components/Avatar";
+"use client";
+import React, { useState } from "react";
+import Step from "../components/Step";
+import { Avatar, LinkButton, OAuthSocialButton } from "@/src/subframe";
 import Link from "next/link";
-import { SignIn } from "@clerk/nextjs";
+import MyTextField from "../../components/MyTextField";
+import { SignUp } from "@clerk/nextjs";
 
-export default function Login() {
+export default function Page() {
+  let [step, setStep] = useState(1);
+
   return (
     <div className="flex min-h-screen w-full flex-col items-start bg-default-background">
       <div className="flex h-full w-full grow shrink-0 basis-0 flex-wrap items-start mobile:flex-col mobile:flex-wrap mobile:gap-0">
         <div className="flex h-full w-full grow shrink-0 basis-0 flex-col items-center justify-center gap-6 pt-12 pr-12 pb-12 pl-12">
           <div className="flex w-full max-w-[448px] flex-col items-center justify-center gap-8">
-            <div className="flex w-full flex-col items-center justify-center gap-2">
-              <SignIn forceRedirectUrl={"/dashboard"} />
+            {/* Add here */}
+            <div className="mx-auto w-full max-w-md rounded-lg bg-white">
+              <SignUp />
             </div>
           </div>
         </div>
