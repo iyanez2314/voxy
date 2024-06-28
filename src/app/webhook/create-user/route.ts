@@ -2,7 +2,7 @@ import { NextResponse, NextRequest } from "next/server";
 import { createUserInDB } from "@/lib/userFunctions";
 import { ClerkEvent, ClerkUser } from "@/src/types/ClerkUser";
 
-export async function createUser(req: NextRequest, res: NextResponse) {
+async function createUser(req: NextRequest, res: NextResponse) {
   // We want to check the request header to make sure it's a POST request
   if (req.method !== "POST") {
     return NextResponse.json(
