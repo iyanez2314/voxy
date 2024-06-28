@@ -16,7 +16,11 @@ export default function Page() {
           <div className="flex w-full max-w-[448px] flex-col items-center justify-center gap-8">
             {/* Add here */}
             <div className="mx-auto w-full max-w-md rounded-lg bg-white">
-              <SignUp />
+              <SignUp
+                fallbackRedirectUrl={
+                  process.env.NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL
+                }
+              />
             </div>
           </div>
         </div>

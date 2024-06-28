@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { motion } from "framer-motion";
-import { cn } from "../util/cn";
+import { cn } from "../../../lib/util/cn";
 
 export const StickyScroll = ({
   content,
