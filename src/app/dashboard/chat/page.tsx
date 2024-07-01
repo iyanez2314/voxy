@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function page() {
   return (
@@ -60,5 +62,50 @@ function PhoneIcon(props: any) {
     >
       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
     </svg>
+  );
+}
+
+function renderFirstTimeChatComponent(): React.JSX.Element {
+  return (
+    <>
+      <div className="absolute inset-0 z-0">
+        <img src="/placeholder.svg" alt="Background" className="object-cover" />
+      </div>
+      <div className="relative z-10 flex items-center justify-center w-full min-h-screen bg-black/50">
+        <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
+          <h2 className="mb-4 text-2xl font-bold">Answer a few questions</h2>
+          <form className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block mb-1 text-sm font-medium">
+                What's your name?
+              </label>
+              <Input id="name" placeholder="Enter your name" />
+            </div>
+            <div>
+              <label htmlFor="email" className="block mb-1 text-sm font-medium">
+                What's your email?
+              </label>
+              <Input id="email" type="email" placeholder="Enter your email" />
+            </div>
+            <div>
+              <label
+                htmlFor="message"
+                className="block mb-1 text-sm font-medium"
+              >
+                Tell us a bit about yourself
+              </label>
+              <Textarea
+                id="message"
+                rows={3}
+                placeholder="Enter your message"
+              />
+            </div>
+            <Button type="submit" className="w-full">
+              Submit
+            </Button>
+          </form>
+        </div>
+      </div>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import { createUserInDB } from "@/lib/userFunctions";
 import { ClerkEvent, ClerkUser } from "@/src/types/ClerkUser";
+import { prisma } from "@/lib/prisma";
 
 async function createUser(req: NextRequest, res: NextResponse) {
   // We want to check the request header to make sure it's a POST request
@@ -31,6 +32,8 @@ async function createUser(req: NextRequest, res: NextResponse) {
   if (createdUser.status !== 201) {
     return NextResponse.json({ message: "User not created" }, { status: 400 });
   }
+
+  await prisma.$disconnect();
 
   return NextResponse.json(
     { message: "User created successfully" },
