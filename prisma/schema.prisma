@@ -8,18 +8,58 @@ generator client {
   provider = "prisma-client-js"
 }
 
-
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
-        
 
 model user_table {
-  id        String   @id @default(cuid())
-  full_name      String
-  clerk_id  String
-  ai_id     String
-  createdAt DateTime @default(now())
+  id              String          @id @default(cuid())
+  full_name       String
+  clerk_id        String
+  ai_id           String?         // Make ai_id optional
+  createdAt       DateTime        @default(now())
+  current_session Int             @default(10)
+  session_count   Int
+  sub_type        Role            @default(FREE)
+  sessions        session_table[]
+  ai              ai_table?        @relation(fields: [ai_id], references: [id])
+}
+
+
+model session_table {
+  id               String     @id @default(cuid())
+  user_id          String
+  overall_score    Float
+  tone_score       Float
+  knowledge_score  Float
+  overall_desc     String
+  tone_desc        String
+  knowledge_desc   String
+  audio_transcript String
+  user             user_table @relation(fields: [user_id], references: [id])
+  createdAt        DateTime   @default(now())
+}
+
+model ai_table {
+  id         String       @id @default(cuid())
+  ai_name    String
+  vapi_id    String       @unique
+  user_table user_table[]
+  ai_prompt  ai_prompt[]
+}
+
+model ai_prompt {
+  id          String    @id @default(cuid())
+  prompt      String
+  prompt_desc String
+  ai          ai_table  @relation(fields: [id], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+enum Role {
+  PRO
+  FREE
 }

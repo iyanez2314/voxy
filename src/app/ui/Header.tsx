@@ -13,10 +13,10 @@ import { PanelLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { SignOutButton } from "@clerk/nextjs";
-import { useUserContext } from "../context/UserContext";
+import { useGlobalUserContext } from "../context/GlobaUserContext";
 
 export default function Header() {
-  const { user } = useUserContext();
+  const { user } = useGlobalUserContext();
   console.log(user);
   return (
     <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background p-3 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">

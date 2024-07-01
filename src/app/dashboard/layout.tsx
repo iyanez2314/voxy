@@ -2,11 +2,12 @@
 import React from "react";
 import SideNav from "../ui/side-nav";
 import Header from "../ui/Header";
-import { UserProvider } from "../context/UserContext";
+// import { UserProvider } from "../context/UserContext";
+import { GlobalUserProvider } from "../context/GlobaUserContext";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <UserProvider>
+    <GlobalUserProvider>
       <div className="flex min-h-screen w-full flex-col bg-muted/40">
         <SideNav />
         <div className="sm:ml-14">
@@ -18,6 +19,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </main>
         </div>
       </div>
-    </UserProvider>
+    </GlobalUserProvider>
   );
 }
