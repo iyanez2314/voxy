@@ -3,8 +3,8 @@ import { DbUser } from "@/src/types";
 import { getUserFromDB } from "@/lib/userFunctions";
 
 async function getUser(req: NextRequest, res: NextResponse) {
+  const searchParams = req.nextUrl.searchParams;
   try {
-    const searchParams = req.nextUrl.searchParams;
     const user_id = searchParams.get("user_id");
 
     console.log("User ID using to fetch:", user_id);
