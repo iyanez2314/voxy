@@ -22,12 +22,11 @@ const GlobalUserContext = createContext<DatabaseUserContextType | undefined>(
 export const GlobalUserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const { user: clerkUser } = useUser(); // This uses the Clerk hook to grab the logged in user.
-  const [user, setUser] = useState<UserType | null>(null); // This is from clerk
-  const [dbUser, setDbUser] = useState<DbUser | null>(null); // This is from the database
+  const { user: clerkUser } = useUser();
+  const [user, setUser] = useState<UserType | null>(null);
+  const [dbUser, setDbUser] = useState<DbUser | null>(null);
 
   const fetchDbUser = useCallback(async (user_id: string) => {
-    console.log("Getting user from DB:", user_id);
     try {
       const res = await fetch("/api/user?user_id=" + user_id);
       const data = await res.json();
@@ -35,10 +34,12 @@ export const GlobalUserProvider: React.FC<{ children: React.ReactNode }> = ({
         console.log("User not found", data);
         return;
       }
-      setDbUser(data);
+
+      console.log("User found =>", data);
+      setDbUser(data.user); // Ensure the response structure matches this
+      console.log("Fetched DB User:", data.user);
     } catch (error) {
       console.log("Error getting user from DB:", error);
-      return null;
     }
   }, []);
 
@@ -60,7 +61,7 @@ export const GlobalUserProvider: React.FC<{ children: React.ReactNode }> = ({
     if (user?.id) {
       fetchDbUser(user.id);
     }
-  }, [user]);
+  }, [user, fetchDbUser]);
 
   return (
     <GlobalUserContext.Provider value={{ user, setUser, dbUser }}>

@@ -21,7 +21,11 @@ async function getUser(req: NextRequest, res: NextResponse) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
 
-    return NextResponse.json({ message: "User found", status: 200 });
+    return NextResponse.json({
+      message: "User found",
+      status: 200,
+      user: userInDb,
+    });
   } catch (error) {
     console.log("Error getting user from DB:", error);
     return NextResponse.json(
